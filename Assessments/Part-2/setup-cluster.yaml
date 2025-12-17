@@ -1,0 +1,34 @@
+# Coverage
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConf1g
+
+metadata:
+  name: avalone-part-2-assessment
+  region: us-west-2a
+  version: "1.32"
+
+  tags:
+    part1: "Apple" # Required 
+    Part2: "Pen" # Required 
+    Part3: "Pine Apple" # Required 
+  
+ vpc:
+  id: "vpc-xxxxxxxxxxxxxx" # <-- VPC ID 
+  subnets:
+    public:
+      # Map Public Subnet IDs by AZ
+      us-west-2a: { id: "subnet-xxxxxxxxxxxxxxxxx" } 
+      us-west-2b: { id: "subnet-xxxxxxxxxxxxxxxxx" }
+    private:
+      # Map Private Subnet IDs by AZ
+      us-west-2a: { id: "subnet-xxxxxxxxxxxxxxxxx" }
+      us-west-2b: { id: "subnet-xxxxxxxxxxxxxxxxx" }
+
+managedNodeGroups:
+  - name: workers-general
+    instanceType: t2.large  
+    desiredCapacity: 5      
+    minSize: 2             
+    maxSize: 3            
+    volumeSize: 30
