@@ -1,4 +1,5 @@
-# Coverage
+This assessment covers the basics of spawning an EKS cluster in AWS
+using UI or eksctl and aws cli.
 
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConf1g
