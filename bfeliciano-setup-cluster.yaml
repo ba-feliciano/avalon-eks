@@ -1,0 +1,35 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: bfeliciano-a2-assessment
+  region: us-west-2
+  version: "1.32"
+
+  tags:
+    aws-assessment-2025: "bfeliciano" # Required
+    env: "training" # Required
+    team: "a2" # Required
+    project: "aws"
+
+vpc:
+  id: "vpc-071d32430428a3b99"
+  subnets:
+    public:
+      us-west-2a: { id: "subnet-08431f8b647e698bd" }
+      us-west-2b: { id: "subnet-0e687f92bae419f23" }
+    private:
+      us-west-2a: { id: "subnet-0224c9befb53cea3e" }
+      us-west-2b: { id: "subnet-0e1d8a9f3336d71b3" }
+
+managedNodeGroups:
+  - name: bfeliciano-a2-nodegroup
+    instanceType: t3.large
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 2
+    volumeSize: 20
+    privateNetworking: true
+    subnets:
+      - subnet-0224c9befb53cea3e
+      - subnet-0e1d8a9f3336d71b3
